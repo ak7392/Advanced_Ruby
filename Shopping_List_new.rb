@@ -3,6 +3,7 @@ class ShoppingList
 
  def initialize
    @list = {}
+   @total = {}
  end
 
  def items(&block)
@@ -18,7 +19,7 @@ class ShoppingList
   end
 
   def total
-    @list.values.inject(0) {|sum, quantity| sum + quantity }
+    total = list.values.map(&:to_i).inject(0, &:+)
   end
 
 end
