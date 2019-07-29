@@ -1,37 +1,38 @@
 class ShoppingList
  attr_reader :list
- attr_accessor :total
 
  def initialize
-   @list = []
-   @total = 0
- end
-
- def add(items, quantity)
-   if @list.include?(items) == false
-     @list << [items, quantity]
-   else
-     @list
-   end
+   @list = {}
  end
 
  def items(&block)
-   block.call
+   self.instance_eval(&block)
  end
 
- def total
-  quantities = list.map { |item| item[1] }
-  total = quantities.inject(0){|sum,x| sum + x }
- end
+ def add(items, quantity)
+    if list[items].nil?
+      list[items] = quantity
+    else
+      list[items] += quantity
+    end
+  end
+
+  def total
+    @list.values.inject(0) {|sum, quantity| sum + quantity }
+  end
+
 end
 
 sl = ShoppingList.new
 
 sl.items do
-  sl.add('Toothpaste', 2)
-  sl.add('Computer', 1)
-  sl.add('Toothpaste', 3)
+  add('Toothpaste', 2)
+  add('Computer', 1)
+  add('Toothpaste', 3)
 end
 
-puts sl.list
-puts sl.total
+
+p sl.list.inspect
+p sl.list.keys.inspect
+p sl.list.values.inspect
+p sl.total
