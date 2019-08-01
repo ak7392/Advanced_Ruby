@@ -50,5 +50,3 @@ class StarkFeedGenerator < FeedGenerator
 end
 
 StarkFeedGenerator.new('Input.csv','new_feed.csv').generate_feed
-b = Row.new
-b.name

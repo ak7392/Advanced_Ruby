@@ -1,19 +1,16 @@
 class Demo
-  def initialize(n)
-    @secret = n
-  end
-  def get_binding
-    binding
-  end
+ def self.for(object)
+   @object = object
+   get_binding
+ end
+ def self.get_binding
+   @object.instance_eval{ binding }
+ end
 end
 
-
-# k1 = Demo.new("")
-# b1 = k1.get_binding
-k2 = Demo.new("Hello")
-b2 = k2.get_binding
-
-
-
-# puts eval("@secre", b1)
-puts eval("@secre", b2)
+user_input = ''
+until user_input == 'q' do
+ user_input = gets.chomp
+ b2 = Demo.get_binding
+ puts eval('@object', b2)
+end
