@@ -11,13 +11,13 @@ class ReadCsv
 end
 
 array = ReadCsv.read('Input.csv')
-first_row = array[0]
-p first_row
-p first_row.name
-p first_row.name = 'XYZ'
-p first_row.age = 25
-second_row = array[1]
-p second_row
-p second_row.name
-p second_row.name = 'Abhinav_Kannojia'
-p second_row.age = 26
+array[0].name
+# p first_row
+# p first_row.name
+# p first_row.name = 'XYZ'
+# p first_row.age = 25
+# second_row = array[1]
+# p second_row
+# p second_row.name
+# p second_row.name = 'Abhinav_Kannojia'
+# p second_row.age = 26
